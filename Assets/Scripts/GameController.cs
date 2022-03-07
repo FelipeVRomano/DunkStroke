@@ -1,29 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] ativa;
-    [SerializeField]
-    private GameObject[] desAtiva;
-    public void reload()
+    public UnityEvent OnPlayGame;
+    
+    public void ReloadScene()
     {
         SceneManager.LoadScene(0);
     }
 
-    public void saiMenu()
+    public void PlayGame()
     {
-        for(int i = 0; i < ativa.Length; i++)
-        {
-            ativa[i].SetActive(true);
-        }
-        for (int i = 0; i < desAtiva.Length; i++)
-        {
-            desAtiva[i].SetActive(false);
-        }
+        OnPlayGame.Invoke();
     }
-   
 }
